@@ -1,0 +1,105 @@
+﻿@model Assignment.Models.EmployeeModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Form</h2>
+        @using (Html.BeginForm("Save", "Loosely", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.Label("First Name:")
+                @Html.TextBox("FirstName", "", new { @class = "form-control" })
+                @Html.ValidationMessage("FirstName", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Last Name:")
+                @Html.TextBox("LastName", "", new { @class = "form-control" })
+                @Html.ValidationMessage("LastName", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Email:")
+                @Html.TextBox("Email", "", new { @class = "form-control" })
+                @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Phone Number:")
+                @Html.TextBox("PhoneNo", "", new { @class = "form-control" })
+                @Html.ValidationMessage("PhoneNo", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Date of Birth:")
+                @Html.TextBox("DOB", "", new { type = "date", @class = "form-control" })
+                @Html.ValidationMessage("DOB", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Gender:")
+                <br />
+                <div class="form-check form-check-inline">
+                    @Html.RadioButton("Gender", "Male", new { id = "male", @class = "form-check-input" })
+                    @Html.Label("Male", new { @class = "form-check-label" })
+                </div>
+                <div class="form-check form-check-inline">
+                    @Html.RadioButton("Gender", "Female", new { id = "female", @class = "form-check-input" })
+                    @Html.Label("Female", new { @class = "form-check-label" })
+                </div>
+                @Html.ValidationMessage("Gender", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Type:")
+                @Html.DropDownList("Type", new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Part Time", Value = "1" },
+                    new SelectListItem { Text = "Full-Time", Value = "2" }
+                }, "Select Type", new { @class = "form-control" })
+                @Html.ValidationMessage("Type", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Salary:")
+                @Html.TextBox("Salary", "", new { @class = "form-control" })
+                @Html.ValidationMessage("Salary", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Designation:")
+                @Html.DropDownList("Designation", new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Frontend Developer", Value = "1" },
+                    new SelectListItem { Text = "Product Manager", Value = "2" },
+                    new SelectListItem { Text = "Backend Developer", Value = "3" },
+                    new SelectListItem { Text = "CEO", Value = "4" },
+                    new SelectListItem { Text = "Data Analyst", Value = "5" },
+                    new SelectListItem { Text = "System Analyst", Value = "6" },
+                    new SelectListItem { Text = "UI/UX Designer", Value = "7" }
+                }, "Select Designation", new { @class = "form-control" })
+                @Html.ValidationMessage("Designation", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Department:")
+                @Html.DropDownList("Department", new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Management", Value = "1" },
+                    new SelectListItem { Text = "IT", Value = "2" },
+                    new SelectListItem { Text = "Finance", Value = "3" },
+                    new SelectListItem { Text = "Accounts", Value = "4" }
+                }, "Select Department", new { @class = "form-control" })
+                @Html.ValidationMessage("Department", "", new { @class = "text-danger" })
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        }
+    </div>
+</body>
+</html>

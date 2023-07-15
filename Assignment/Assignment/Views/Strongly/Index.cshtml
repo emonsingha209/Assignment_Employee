@@ -1,0 +1,105 @@
+﻿@model Assignment.Models.EmployeeModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Employee Form</h2>
+        @using (Html.BeginForm("Save", "Strongly", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.FirstName)
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LastName)
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNo)
+                @Html.TextBoxFor(model => model.PhoneNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DOB)
+                @Html.TextBoxFor(model => model.DOB, new { type = "date", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gender)
+                <br />
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => model.Gender, "Male", new { id = "male", @class = "form-check-input" })
+                    @Html.Label("Male", new { @class = "form-check-label" })
+                </div>
+                <div class="form-check form-check-inline">
+                    @Html.RadioButtonFor(model => model.Gender, "Female", new { id = "female", @class = "form-check-input" })
+                    @Html.Label("Female", new { @class = "form-check-label" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Type)
+                @Html.DropDownListFor(model => model.Type, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Part Time", Value = "1" },
+                    new SelectListItem { Text = "Full-Time", Value = "2" }
+                }, "Select Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Salary)
+                @Html.TextBoxFor(model => model.Salary, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Designation)
+                @Html.DropDownListFor(model => model.Designation, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Frontend Developer", Value = "1" },
+                    new SelectListItem { Text = "Product Manager", Value = "2" },
+                    new SelectListItem { Text = "Backend Developer", Value = "3" },
+                    new SelectListItem { Text = "CEO", Value = "4" },
+                    new SelectListItem { Text = "Data Analyst", Value = "5" },
+                    new SelectListItem { Text = "System Analyst", Value = "6" },
+                    new SelectListItem { Text = "UI/UX Designer", Value = "7" }
+                }, "Select Designation", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Department)
+                @Html.DropDownListFor(model => model.Department, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Management", Value = "1" },
+                    new SelectListItem { Text = "IT", Value = "2" },
+                    new SelectListItem { Text = "Finance", Value = "3" },
+                    new SelectListItem { Text = "Accounts", Value = "4" }
+                }, "Select Department", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        }
+    </div>
+</body>
+</html>
